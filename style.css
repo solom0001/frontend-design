@@ -1,16 +1,68 @@
 :root {
-    background: #E3EDFB;
+  background: #e3edfb;
 
-    --color-icon: #0B3A67;
+  --color-icon: #0b3a67;
 
-    --image-width: 8rem;
-    --card-padding: 1rem;
+  --image-width: 8rem;
+  --card-padding: 1rem;
 
-    --font-heading: 1.75rem;
+  --font-heading: 1.75rem;
 
-    /* Når du synes, du er færdig, så ændr værdien herunder til '1' for at se dit resultat i browseren */
-    --hide-overlay: 0;
+  /* Når du synes, du er færdig, så ændr værdien herunder til '1' for at se dit resultat i browseren */
+  --hide-overlay: 0;
 }
 
-
 /* Begynd her... */
+.grid1 {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  padding: 20px;
+  max-height: 200px;
+  width: fit-content;
+  max-width: 450px;
+}
+
+.img-case {
+  background-image: url(profile.png);
+  background-position: top;
+  background-size: cover;
+  max-height: 100%;
+  aspect-ratio: 1/1;
+  clip-path: circle(50% at 50% 50%);
+}
+
+.desc-case {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 100%;
+
+  h1 {
+    font-size: 30px;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #449894;
+  }
+
+  div {
+    display: flex;
+    margin-top: 0.5rem;
+    justify-content: space-between;
+    max-height: 30px;
+
+    * {
+      max-width: 25px;
+      aspect-ratio: 1/1;
+      color: #0b3a67;
+    }
+  }
+
+  > * {
+    padding: 0.2ch;
+  }
+}
