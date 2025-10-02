@@ -1,75 +1,129 @@
 .bento {
+  display: grid;
+  grid-template-areas:
+    "a a b"
+    "c d b"
+    "c d e";
+  grid-template-rows: 1fr;
+  grid-auto-columns: 1fr;
+  gap: var(--spacing-base);
+
+  .title {
+    grid-area: a;
+    --bg: var(--color-brand-yellow);
+  }
+
+  .list {
+    grid-area: d;
     display: grid;
-    gap: var(--spacing-base);
+    color: white;
+    font-weight: 800;
+    place-items: center;
+    --bg: var(--color-brand-coffee);
+  }
 
-    .title {
-        --bg: var(--color-brand-yellow);
-    }
+  .image-1 {
+    grid-area: b;
+    display: grid;
+    isolation: isolate;
+    place-items: center;
 
-    .list {
-        --bg: var(--color-brand-coffee);
-    }
+    color: var(--color-text-accent);
 
-    .image-1 {
-        color: var(--color-text-accent);
+    > * {
+      grid-area: 1/1;
     }
+  }
+  .image-2 {
+    grid-area: c;
+    color: var(--color-text-accent);
+  }
 
-    .tag {
-        --bg: var(--color-brand-olive);
-        font-size: 2rem;
-        line-height: 1.2;
+  .tag {
+    grid-area: e;
+    --bg: var(--color-brand-olive);
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  @media (width <800px) {
+    & {
+      grid-template-areas:
+        "a a b"
+        "d c b"
+        "d e b";
     }
+  }
+
+  .highlight {
+    color: var(--color-menu-highlight);
+  }
+  .tagline {
+    text-align: center;
+    font-size: clamp(12px, 4cqi, 1.2rem);
+    font-weight: 800;
+  }
+
+  .website {
+    font-size: clamp(12px, 4cqi, 1.2rem);
+    margin-top: auto;
+    text-align: center;
+    font-weight: 800;
+  }
 }
 
 .card {
-    border-radius: var(--border-radius);
-    background: var(--bg);
-    overflow: clip;
-
-    &:not(:has(img)) {
-        padding: var(--spacing-base);
-    }
+  border-radius: var(--border-radius);
+  background: var(--bg);
+  overflow: clip;
+  container-type: inline-size;
+  &:not(:has(img)) {
+    padding: var(--spacing-base);
+  }
 }
 
 h2 {
-    font-size: 4rem;
-    line-height: 1.1;
-    color: var(--color-text-dark);
-    margin-bottom: var(--spacing-base);
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--color-text-dark);
+  margin-bottom: var(--spacing-base);
+
+  @container (width < 800px) {
+    font-size: clamp(24px, 10cqi, 3.5rem);
+  }
 }
-
-.website {
-    font-size: 1.2rem;
-    margin-top: auto;
+p {
+  @container (width < 800px) {
+    font-size: clamp(16px, 4cqi, 18px);
+  }
 }
-
-
 
 @layer {
-    :root {
-        /* Brand Colors */
-        --color-brand-yellow: #FFB800;
-        --color-brand-olive: #4A5F32;
-        --color-brand-coffee: #5C3C2E;
+  :root {
+    /* Brand Colors */
+    --color-brand-yellow: #ffb800;
+    --color-brand-olive: #4a5f32;
+    --color-brand-coffee: #5c3c2e;
 
-        /* Background Colors */
-        --color-background-dark: #2C1810;
-        --color-background-primary: var(--color-brand-yellow);
-        --color-background-menu: var(--color-brand-coffee);
-        --color-background-accent: var(--color-brand-olive);
+    /* Background Colors */
+    --color-background-dark: #2c1810;
+    --color-background-primary: var(--color-brand-yellow);
+    --color-background-menu: var(--color-brand-coffee);
+    --color-background-accent: var(--color-brand-olive);
 
-        /* Text Colors */
-        --color-text-dark: var(--color-background-dark);
-        --color-text-light: #FFFFFF;
-        --color-text-accent: var(--color-brand-yellow);
+    /* Text Colors */
+    --color-text-dark: var(--color-background-dark);
+    --color-text-light: #ffffff;
+    --color-text-accent: var(--color-brand-yellow);
 
-        /* Component Colors */
-        --color-logo-icon: var(--color-text-dark);
-        --color-menu-highlight: var(--color-brand-yellow);
+    /* Component Colors */
+    --color-logo-icon: var(--color-text-dark);
+    --color-menu-highlight: var(--color-brand-yellow);
 
-        /* Layout */
-        --border-radius: 24px;
-        --spacing-base: 20px;
-        --spacing-large: 40px;
-    }
+    /* Layout */
+    --border-radius: 24px;
+    --spacing-base: 20px;
+    --spacing-large: 40px;
+  }
 }
