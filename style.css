@@ -25,13 +25,24 @@
   .image-1 {
     grid-area: b;
     display: grid;
+    grid-template-areas: "stack";
     isolation: isolate;
     place-items: center;
 
     color: var(--color-text-accent);
 
     > * {
-      grid-area: 1/1;
+      grid-area: stack;
+    }
+    > :nth-child(3) {
+      place-self: end center;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    > :nth-child(2) {
+      place-self: start center;
+      text-align: center;
+      margin-bottom: 1rem;
     }
   }
   .image-2 {
@@ -94,9 +105,10 @@ h2 {
   }
 }
 p {
-  @container (width < 800px) {
+  font-size: clamp(16px, 2cqi, 18px);
+  /* @container (width < 800px) {
     font-size: clamp(16px, 4cqi, 18px);
-  }
+  } */
 }
 
 @layer {
